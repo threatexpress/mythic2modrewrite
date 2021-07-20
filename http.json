@@ -1,0 +1,91 @@
+{
+    "payload_type": "apfell",
+    "c2_profiles": [
+        {
+            "c2_profile": "http",
+            "c2_profile_parameters": {
+                "callback_port": "80",
+                "killdate": "2022-06-23",
+                "encrypted_exchange_check": "T",
+                "callback_jitter": "23",
+                "headers": [
+                    {
+                        "name": "User-Agent",
+                        "key": "User-Agent",
+                        "value": "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko",
+                        "custom": false
+                    },
+                    {
+                        "name": "Host",
+                        "key": "Host",
+                        "value": "asdf",
+                        "custom": false
+                    },
+                    {
+                        "name": "*",
+                        "key": "my key",
+                        "value": "my value",
+                        "custom": true
+                    }
+                ],
+                "AESPSK": "aes256_hmac",
+                "callback_host": "https://domain.com",
+                "get_uri": "index",
+                "post_uri": "data",
+                "query_path_name": "q",
+                "proxy_host": "",
+                "proxy_port": "",
+                "proxy_user": "",
+                "proxy_pass": "",
+                "callback_interval": "10"
+            }
+        }
+    ],
+    "commands": [
+        "cat",
+        "cd",
+        "chrome_bookmarks",
+        "chrome_js",
+        "chrome_tabs",
+        "clipboard",
+        "current_user",
+        "download",
+        "exit",
+        "get_config",
+        "hostname",
+        "iTerm",
+        "ifconfig",
+        "jscript",
+        "jsimport",
+        "jsimport_call",
+        "launchapp",
+        "list_apps",
+        "list_users",
+        "load",
+        "ls",
+        "persist_emond",
+        "persist_folderaction",
+        "persist_launch",
+        "persist_loginitem_allusers",
+        "plist",
+        "prompt",
+        "pwd",
+        "rm",
+        "run",
+        "screenshot",
+        "security_info",
+        "shell",
+        "sleep",
+        "spawn_download_cradle",
+        "spawn_drop_and_execute",
+        "system_info",
+        "terminals_read",
+        "terminals_send",
+        "upload"
+    ],
+    "selected_os": "macOS",
+    "tag": "Created on...",
+    "wrapper": false,
+    "build_parameters": [],
+    "filename": "apfell.js"
+}
