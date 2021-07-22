@@ -4,23 +4,68 @@ Generate Apache mod_rewrite rules for Mythic C2 profiles
 **Work in progress** 
 Currently only supports ruleset generation for the "http" C2 profile type
 
-
----
-
-# Automatically Generate Rulesets for Apache mod_rewrite for Intelligent HTTP C2 Redirection
-
 This project converts a Mythic payload config to a functional mod_rewrite `.htaccess` to support HTTP reverse proxy redirection to a Cobalt Strike teamserver. The use of reverse proxies provides protection to backend C2 servers from profiling, investigation, and general internet background radiation.
 
-***Note***: You should test and tune the output as needed before deploying, but these scripts should handle the heavy lifting.
+As of [Mythic 2.2.12](https://bloodhoundhq.slack.com/archives/CHG769BL2/p1626822877094500) redirect rule creation is enabled automatically for the `http` C2 profile. Futhermore, you can now [add these to your own custom C2 profiles](https://docs.mythic-c2.net/customizing/c2-related-development/c2-profile-code/server-side-coding/redirect-rules). 
+
+***Note***: You should test and tune the output as needed before deploying, but this script should handle the heavy lifting.
 
 ## Features
 
 - Mythic "http" C2 Profile config parsing
+ 
 
 ## Quick start
 
-The http.json config example is included for a quick test.
+A `http.json` config example is included for a quick test.
 
+0) Export Payload Config - Once you generate a Mythic agent with whatever config you want, you can go to the "Created Payloads" page, select the dropdown next to your payload, and click "Export Payload Config". You'll get something like:
+```{
+    "payload_type": "apfell",
+    "c2_profiles": [
+        {
+            "c2_profile": "http",
+            "c2_profile_parameters": {
+                "callback_port": "80",
+                "killdate": "2022-06-23",
+                "encrypted_exchange_check": "T",
+                "callback_jitter": "23",
+                "headers": [
+                    {
+                        "name": "User-Agent",
+                        "key": "User-Agent",
+                        "value": "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko",
+                        "custom": false
+                    },
+                    {
+                        "name": "Host",
+                        "key": "Host",
+                        "value": "asdf",
+                        "custom": false
+                    },
+                    {
+                        "name": "*",
+                        "key": "my key",
+                        "value": "my value",
+                        "custom": true
+                    }
+                ],
+                "AESPSK": "aes256_hmac",
+                "callback_host": "https://domain.com",
+                "get_uri": "index",
+                "post_uri": "data",
+                "query_path_name": "q",
+                "proxy_host": "",
+                "proxy_port": "",
+                "proxy_user": "",
+                "proxy_pass": "",
+                "callback_interval": "10"
+            }
+        }
+    ],
+    "commands": [
+        "cat",.....<snip>
+```
 1) Run the script against a payload config
 2) Save the output to `.htaccess` on your redirector
 3) Modify as needed
